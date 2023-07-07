@@ -25,6 +25,7 @@
       "@asset/*": ["src/asset/*"],
       "@component/*": ["src/component/*"],
       "@container/*": ["src/container/*"],
+      "@recoil/*": ["src/recoil/*"],
       "@feature/*": ["src/feature/*"],
       "@hook/*": ["src/hook/*"],
       "@route/*": ["src/route/*"],
