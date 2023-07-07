@@ -14,7 +14,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+    const globalCss = "m-0 p-0 box-border font-inter";
+
+    return (
+        <div className={`${globalCss}`}>
+            <RouterProvider router={router} />
+        </div>
+    );
 }
 
 export default App;
