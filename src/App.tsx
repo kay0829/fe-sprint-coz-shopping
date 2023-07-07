@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 
 import ErrorPage from "@container/ErrorPage";
 import Container from "@container/Container";
@@ -25,7 +26,9 @@ function App() {
 
     return (
         <div className={`${globalCss}`}>
-            <RouterProvider router={router} />
+            <RecoilRoot>
+                <RouterProvider router={router} />
+            </RecoilRoot>
         </div>
     );
 }
