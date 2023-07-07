@@ -12,6 +12,7 @@ export default {
             },
             spacing: {
                 "76px": "4.75rem",
+                "52px": "3.25rem",
                 "55px": "3.43rem",
                 "30px": "1.875rem",
             },
