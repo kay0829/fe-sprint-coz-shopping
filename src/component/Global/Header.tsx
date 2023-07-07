@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useRecoilState } from "recoil";
+import { dropdownShow } from "@recoil/Global";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import CDropDown from "@component/Common/CDropDown";
@@ -8,6 +11,8 @@ import MenuDropDownItem from "@component/Global/MenuDropDownItem";
 import Logo from "@asset/Logo.png";
 
 function Header() {
+    const [isDropDownShow, setIsDropDownShow] = useRecoilState(dropdownShow);
+
     return (
         <div className="flex justify-between items-center w-full h-20 px-76px">
             <Link to="/">
@@ -20,10 +25,11 @@ function Header() {
             </Link>
 
             <div className="relatvie z-10">
-                <button className="cursor-pointer">
+                <button className="cursor-pointer" onClick={() => setIsDropDownShow(!isDropDownShow)}>
                     <GiHamburgerMenu size={"2rem"} />
                 </button>
-                <CDropDown>
+
+                <CDropDown height="170px">
                     <MenuDropDownItem />
                 </CDropDown>
             </div>
