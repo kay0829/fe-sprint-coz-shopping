@@ -11,6 +11,7 @@ export default {
                 "3.5xl": "2rem",
             },
             spacing: {
+                "82px": "5.125rem",
                 "76px": "4.75rem",
                 "52px": "3.25rem",
                 "55px": "3.43rem",
