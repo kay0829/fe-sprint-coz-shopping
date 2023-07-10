@@ -6,6 +6,7 @@ import ErrorPage from "@container/ErrorPage";
 import Container from "@container/Container";
 
 import Main from "@container/Main";
+import ProductList from "@container/ProductList";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Main />,
+            },
+            {
+                path: "/products/list",
+                element: <ProductList isMain={false} />,
             },
         ],
     },
