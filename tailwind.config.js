@@ -18,7 +18,7 @@ export default {
             },
             colors: {
                 "light-black": "#ffffffa",
-                background: "#888888",
+                "light-text": "#888888",
                 violet: "#452CDD",
             },
             borderWidth: {
