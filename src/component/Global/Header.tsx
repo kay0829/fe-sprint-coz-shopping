@@ -14,7 +14,7 @@ function Header() {
     const [isDropDownShow, setIsDropDownShow] = useRecoilState(dropdownShow);
 
     return (
-        <div className="flex justify-between items-center w-full h-20 px-76px">
+        <header className="flex justify-between items-center w-full h-20 px-76px">
             <Link to="/">
                 <div className="flex items-center cursor-pointer">
                     <div className="w-55px h-30px pr-3">
@@ -33,7 +33,7 @@ function Header() {
                     <MenuDropDownItem />
                 </CDropDown>
             </div>
-        </div>
+        </header>
     );
 }
 
