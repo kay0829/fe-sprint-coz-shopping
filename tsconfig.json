@@ -31,6 +31,7 @@
       "@route/*": ["src/route/*"],
       "@style/*": ["src/style/*"],
       "@util/*": ["src/util/*"],
+      "@type/*": ["src/type/*"],
       "@/*": ["src/*"],
     }
   },
