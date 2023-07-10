@@ -26,7 +26,7 @@ function Container() {
     return (
         <>
             <Header />
-            <main ref={mainRef} style={{ minHeight: mainHeight + "px" }}>
+            <main ref={mainRef} style={{ minHeight: mainHeight + "px" }} className="px-76px py-6">
                 <React.Suspense fallback={<div>Loading...</div>}>
                     <Outlet />
                 </React.Suspense>

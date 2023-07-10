@@ -1,12 +1,29 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
-
-import { reqGetProductList } from "@recoil/ProductList/index";
+import { Link } from "react-router-dom";
+import ProductList from "@container/ProductList";
 
 function Main() {
-    const productList = useRecoilValue(reqGetProductList);
-
-    return <p className="text-3xl font-bold underline">Hello world!</p>;
+    return (
+        <>
+            <section className="mb-3">
+                <div className="flex justify-between items-center">
+                    <p className="mb-3 text-2xl">상품 리스트</p>
+                    <Link to="/products/list">
+                        <p>더보기 +</p>
+                    </Link>
+                </div>
+                <ProductList isMain={true} />
+            </section>
+            <section className="mb-3">
+                <div className="flex justify-between items-center">
+                    <p className="mb-3 text-2xl">북마크 리스트</p>
+                    <Link to="/bookmark">
+                        <p>더보기 +</p>
+                    </Link>
+                </div>
+            </section>
+        </>
+    );
 }
 
 export default Main;

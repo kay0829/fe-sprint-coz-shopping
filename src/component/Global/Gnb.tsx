@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import IconAll from "@asset/icon-all.png";
 import IconProduct from "@asset/icon-product.png";
 import IconCategory from "@asset/icon-category.png";
-import IconDisplay from "@asset/icon-display.png";
+import IconExhibition from "@asset/icon-exhibition.png";
 import IconBrand from "@asset/icon-category.png";
 
 interface IGnbItems {
@@ -36,7 +36,7 @@ function Gnb() {
         {
             id: 3,
             label: "기획전",
-            img: IconDisplay,
+            img: IconExhibition,
             isSelected: false,
         },
         {
