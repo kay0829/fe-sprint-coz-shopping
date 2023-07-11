@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { reqGetProductList } from "@recoil/ProductList/index";
 
 import CProductItem from "@component/Common/CProductItem";
+import Gnb from "@component/Global/Gnb";
 
 function ProductList({ isMain }: { isMain: boolean }) {
     const productList = useRecoilValue(reqGetProductList);
@@ -16,10 +17,13 @@ function ProductList({ isMain }: { isMain: boolean }) {
                     ))}
                 </div>
             ) : (
-                <div className="flex flex-wrap justify-center">
-                    {productList.map((v) => (
-                        <CProductItem item={v} key={v.id} />
-                    ))}
+                <div>
+                    <Gnb />
+                    <div className="flex flex-wrap justify-center">
+                        {productList.map((v) => (
+                            <CProductItem item={v} key={v.id} />
+                        ))}
+                    </div>
                 </div>
             )}
         </>

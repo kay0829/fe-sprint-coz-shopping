@@ -10,3 +10,11 @@ export interface IProductItem {
     discountPercentage?: number | null;
     type?: string | null;
 }
+
+export interface IProductInfo {
+    title?: string | null;
+    subTitle?: string | null;
+    info?: string | null;
+    subInfo?: string | null;
+    img?: string | null;
+}

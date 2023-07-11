@@ -23,6 +23,7 @@ export default {
                 "light-black": "#ffffffa",
                 "light-text": "#888888",
                 violet: "#452CDD",
+                modal: "rgba(0, 0, 0, 0.4)",
             },
             borderWidth: {
                 "16px": "1rem",

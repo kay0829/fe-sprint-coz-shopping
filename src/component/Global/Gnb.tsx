@@ -50,7 +50,7 @@ function Gnb() {
     const [gnbMenu, setGnbMenu] = useState(gnbItems);
 
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-6">
             {gnbMenu.map((v: IGnbItems, i: number) => {
                 return (
                     <div
