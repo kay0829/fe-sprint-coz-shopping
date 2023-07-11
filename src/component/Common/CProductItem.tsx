@@ -1,5 +1,6 @@
-import React from "react";
-import { IProductItem } from "@type/ProductList";
+import React, { useEffect, useState } from "react";
+
+import { IProductItem, IProductInfo } from "@type/ProductList";
 
 import PreparingImage from "@asset/preparing-image.jpeg";
 
@@ -8,97 +9,85 @@ import { AiFillStar } from "react-icons/ai";
 function CProductItem(props: { item: IProductItem }) {
     const { id, title, sub_title, price, image_url, brand_name, brand_image_url, follower, discountPercentage, type } =
         props.item;
+    // prettier-ignore
+    const [productInfo, setProductInfo] = useState<IProductInfo>({});
+    const [isOpen, setIsOpen] = useState(false);
 
-    const ProductionItem = () => {
-        return (
-            <>
+    const infoWidthCategory = () => {
+        if (type === "Product") {
+            return {
+                title: title,
+                subTitle: sub_title,
+                info: `${discountPercentage || 0}%`,
+                subInfo: `${Number.parseInt(price || "0").toLocaleString("ko-KR")}원`,
+                img: image_url,
+            };
+        }
+
+        if (type === "Category") {
+            return {
+                title: title,
+                subTitle: "",
+                info: "",
+                subInfo: "",
+                img: image_url,
+            };
+        }
+
+        if (type === "Exhibition") {
+            return {
+                title: title,
+                subTitle: "",
+                info: `${discountPercentage || 0}%`,
+                subInfo: "",
+                img: image_url,
+            };
+        }
+
+        if (type === "Brand") {
+            return {
+                title: brand_name,
+                subTitle: "",
+                info: "관심고객수",
+                subInfo: `${(follower || 0).toLocaleString("ko-KR")}명`,
+                img: brand_image_url,
+            };
+        }
+
+        return {};
+    };
+
+    useEffect(() => {
+        setProductInfo(infoWidthCategory());
+    }, []);
+
+    return (
+        <>
+            <figure
+                key={id}
+                className={`relative w-264px min-w-264px mr-6 mb-3 cursor-pointer`}
+                onClick={() => setIsOpen(true)}
+            >
                 <div className="w-264px h-210px overflow-hidden rounded-xl">
                     <img
                         className="w-full h-full hover:scale-125 transition-all duration-400"
-                        src={image_url || PreparingImage}
+                        src={productInfo?.img || PreparingImage}
                         alt={`${title} 이미지`}
                     />
                 </div>
                 <div className="flex justify-between items-center h-6">
-                    <p className="font-bold">{title || ""}</p>
-                    <p className="text-violet font-bold">{`${discountPercentage || 0}%`}</p>
+                    <p className="font-bold">{productInfo?.title || ""}</p>
+                    <p className={`font-bold ${type === "Product" ? "text-violet" : ""}`}>{productInfo?.info || ""}</p>
                 </div>
                 <div className="flex justify-between items-center h-6">
-                    <p>{sub_title || ""}</p>
-                    <p>{`${Number.parseInt(price || "0").toLocaleString("ko-KR")}원`}</p>
+                    <p>{productInfo?.subTitle || ""}</p>
+                    <p>{productInfo?.subInfo || ""}</p>
                 </div>
-            </>
-        );
-    };
-
-    const CategoryItem = () => {
-        return (
-            <>
-                <div className="w-264px h-210px rounded-xl overflow-hidden object-cover">
-                    <img
-                        className="w-full h-full hover:scale-125 transition-all duration-400"
-                        src={image_url || PreparingImage}
-                        alt={`${title} 이미지`}
-                    />
-                </div>
-                <div className="flex justify-between items-center h-6">
-                    <p className="font-bold">{`#${title || ""}`}</p>
-                </div>
-                <div className="h-6"></div>
-            </>
-        );
-    };
-
-    const ExhibitionItem = () => {
-        return (
-            <>
-                <div className="w-264px h-210px rounded-xl overflow-hidden object-cover">
-                    <img
-                        className="w-full h-full hover:scale-125 transition-all duration-400"
-                        src={image_url || PreparingImage}
-                        alt={`${title} 이미지`}
-                    />
-                </div>
-                <div className="flex justify-between items-center h-6">
-                    <p className="font-bold">{title || ""}</p>
-                    <p>{`${discountPercentage || 0}%`}</p>
-                </div>
-                <div className="h-6"></div>
-            </>
-        );
-    };
-
-    const BrandItem = () => {
-        return (
-            <>
-                <div className="w-264px h-210px rounded-xl overflow-hidden object-cover">
-                    <img
-                        className="w-full h-full hover:scale-125 transition-all duration-400"
-                        src={brand_image_url || PreparingImage}
-                        alt=""
-                    />
-                </div>
-                <div className="flex justify-between items-center h-6">
-                    <p className="font-bold">{brand_name || ""}</p>
-                    <p className="font-bold">관심고객수</p>
-                </div>
-                <div className="flex justify-end items-center h-6">
-                    <p>{`${(follower || 0).toLocaleString("ko-KR")}명`}</p>
-                </div>
-            </>
-        );
-    };
-
-    return (
-        <figure key={id} className={`relative w-264px min-w-264px mr-6 mb-3 cursor-pointer`}>
-            {type === "Product" ? <ProductionItem /> : null}
-            {type === "Category" ? <CategoryItem /> : null}
-            {type === "Exhibition" ? <ExhibitionItem /> : null}
-            {type === "Brand" ? <BrandItem /> : null}
-            <button className="absolute bottom-16 right-3">
-                <AiFillStar size={"2rem"} color="#e8e8e8" />
-            </button>
-        </figure>
+                <button className="absolute bottom-16 right-3">
+                    <AiFillStar size={"2rem"} color="#e8e8e8" />
+                </button>
+            </figure>
+        </>
     );
 }
 
