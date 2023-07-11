@@ -5,6 +5,8 @@ import { IProductItem, IProductInfo } from "@type/ProductList";
 import PreparingImage from "@asset/preparing-image.jpeg";
 
 import { AiFillStar } from "react-icons/ai";
+import CModal from "./CModal";
+import ProductModal from "@component/ProductList/ProductModal";
 
 function CProductItem(props: { item: IProductItem }) {
     const { id, title, sub_title, price, image_url, brand_name, brand_image_url, follower, discountPercentage, type } =
@@ -87,6 +89,15 @@ function CProductItem(props: { item: IProductItem }) {
                     <AiFillStar size={"2rem"} color="#e8e8e8" />
                 </button>
             </figure>
+            {isOpen ? (
+                <CModal setIsOpen={setIsOpen}>
+                    <ProductModal
+                        img={productInfo.img || PreparingImage}
+                        title={productInfo.title || ""}
+                        setIsOpen={setIsOpen}
+                    />
+                </CModal>
+            ) : null}
         </>
     );
 }
