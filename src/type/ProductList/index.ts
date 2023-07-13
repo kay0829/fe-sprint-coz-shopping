@@ -11,6 +11,10 @@ export interface IProductItem {
     type?: string | null;
 }
 
+export interface IProductItemWithBookmark extends IProductItem {
+    isBookmarked?: boolean | null;
+}
+
 export interface IProductInfo {
     title?: string | null;
     subTitle?: string | null;
