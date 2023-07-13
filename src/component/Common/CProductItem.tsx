@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+import { useSetRecoilState } from "recoil";
+import { addBookmark, removeBookmark } from "@recoil/Bookmark";
+
 import CModal from "@component/Common/CModal";
 import ProductModal from "@component/ProductList/ProductModal";
 import PreparingImage from "@asset/preparing-image.jpeg";
@@ -7,11 +10,22 @@ import { AiFillStar } from "react-icons/ai";
 
 import { useToast } from "@hook/useToast";
 
-import { IProductItem, IProductInfo } from "@type/ProductList";
+import { IProductInfo, IProductItemWithBookmark } from "@type/ProductList";
 
-function CProductItem(props: { item: IProductItem }) {
-    const { id, title, sub_title, price, image_url, brand_name, brand_image_url, follower, discountPercentage, type } =
-        props.item;
+function CProductItem(props: { item: IProductItemWithBookmark }) {
+    const {
+        id,
+        title,
+        sub_title,
+        price,
+        image_url,
+        brand_name,
+        brand_image_url,
+        follower,
+        discountPercentage,
+        type,
+        isBookmarked,
+    } = props.item;
 
     // prettier-ignore
     const [productInfo, setProductInfo] = useState<IProductInfo>({});
@@ -19,6 +33,8 @@ function CProductItem(props: { item: IProductItem }) {
     const [bookmarked, setBookmarked] = useState(!!isBookmarked);
 
     const { fireToast } = useToast();
+    const addBookmarkFn = useSetRecoilState(addBookmark);
+    const removeBookmarkFn = useSetRecoilState(removeBookmark);
 
     const infoWidthCategory = () => {
         if (type === "Product") {
@@ -95,6 +111,7 @@ function CProductItem(props: { item: IProductItem }) {
                     onClick={(e) => {
                         e.stopPropagation();
                         if (bookmarked) {
+                            removeBookmarkFn([{ ...props.item }]);
                             setBookmarked(false);
                             fireToast({
                                 content: (
@@ -105,6 +122,7 @@ function CProductItem(props: { item: IProductItem }) {
                                 ),
                             });
                         } else {
+                            addBookmarkFn([{ ...props.item, isBookmarked: true }]);
                             setBookmarked(true);
                             fireToast({
                                 content: (
