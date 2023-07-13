@@ -16,6 +16,7 @@ function CProductItem(props: { item: IProductItem }) {
     // prettier-ignore
     const [productInfo, setProductInfo] = useState<IProductInfo>({});
     const [isOpen, setIsOpen] = useState(false);
+    const [isBookmarked, setIsBookmarked] = useState(false);
 
     const { fireToast } = useToast();
 
@@ -93,10 +94,34 @@ function CProductItem(props: { item: IProductItem }) {
                     className="absolute bottom-16 right-3"
                     onClick={(e) => {
                         e.stopPropagation();
-                        fireToast({ content: "hello~" });
+                        if (isBookmarked) {
+                            setIsBookmarked(false);
+                            fireToast({
+                                content: (
+                                    <div className="flex items-center">
+                                        <AiFillStar size={"2rem"} color="#e8e8e8" />
+                                        <p>상품이 북마크에서 제거되었습니다.</p>
+                                    </div>
+                                ),
+                            });
+                        } else {
+                            setIsBookmarked(true);
+                            fireToast({
+                                content: (
+                                    <div className="flex items-center">
+                                        <AiFillStar size={"2rem"} color="#FFD361" />
+                                        <p>상품이 북마크에 추가되었습니다.</p>
+                                    </div>
+                                ),
+                            });
+                        }
                     }}
                 >
-                    <AiFillStar size={"2rem"} color="#e8e8e8" />
+                    {isBookmarked ? (
+                        <AiFillStar size={"2rem"} color="#FFD361" />
+                    ) : (
+                        <AiFillStar size={"2rem"} color="#e8e8e8" />
+                    )}
                 </button>
             </figure>
             {isOpen ? (
