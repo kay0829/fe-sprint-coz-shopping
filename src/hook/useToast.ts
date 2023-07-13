@@ -8,11 +8,11 @@ import { Toast } from "@type/Global";
 export function useToast() {
     const toasts = useRecoilValue(toastState);
     const id = getRandomID();
-    const toastWithNewItem = useSetRecoilState(addToastItem);
-    const toastWithoutItem = useSetRecoilState(removeToastItem);
+    const addToastItemFn = useSetRecoilState(addToastItem);
+    const removeToastItemFn = useSetRecoilState(removeToastItem);
 
     const fireToast = (toast: Toast) => {
-        toastWithNewItem([
+        addToastItemFn([
             {
                 id: id,
                 content: toast.content || "",
@@ -22,7 +22,7 @@ export function useToast() {
         ]);
 
         setTimeout(() => {
-            toastWithoutItem([
+            removeToastItemFn([
                 {
                     id: id,
                     content: toast.content || "",
