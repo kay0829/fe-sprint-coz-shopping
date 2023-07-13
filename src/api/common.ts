@@ -17,7 +17,6 @@ export const commonApi = ({
     data?: object | null,
     options?: object | null,
 }) => {
-    console.log(`${apiEndpoint}/${apiVersion}/${path}`);
     return axios({
         method,
         url: `${apiEndpoint}/${apiVersion}/${path}`,

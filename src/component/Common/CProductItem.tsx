@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-import { IProductItem, IProductInfo } from "@type/ProductList";
-
-import PreparingImage from "@asset/preparing-image.jpeg";
-
-import { AiFillStar } from "react-icons/ai";
-import CModal from "./CModal";
+import CModal from "@component/Common/CModal";
 import ProductModal from "@component/ProductList/ProductModal";
+import PreparingImage from "@asset/preparing-image.jpeg";
+import { AiFillStar } from "react-icons/ai";
+
+import { useToast } from "@hook/useToast";
+
+import { IProductItem, IProductInfo } from "@type/ProductList";
 
 function CProductItem(props: { item: IProductItem }) {
     const { id, title, sub_title, price, image_url, brand_name, brand_image_url, follower, discountPercentage, type } =
         props.item;
+
     // prettier-ignore
     const [productInfo, setProductInfo] = useState<IProductInfo>({});
     const [isOpen, setIsOpen] = useState(false);
+
+    const { fireToast } = useToast();
 
     const infoWidthCategory = () => {
         if (type === "Product") {
@@ -85,7 +89,13 @@ function CProductItem(props: { item: IProductItem }) {
                     <p>{productInfo?.subTitle || ""}</p>
                     <p>{productInfo?.subInfo || ""}</p>
                 </div>
-                <button className="absolute bottom-16 right-3">
+                <button
+                    className="absolute bottom-16 right-3"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        fireToast({ content: "hello~" });
+                    }}
+                >
                     <AiFillStar size={"2rem"} color="#e8e8e8" />
                 </button>
             </figure>

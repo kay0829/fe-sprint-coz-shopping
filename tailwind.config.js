@@ -19,6 +19,9 @@ export default {
                 "55px": "3.43rem",
                 "30px": "1.875rem",
             },
+            minWidth: {
+                "244px": "15.25rem",
+            },
             colors: {
                 "light-black": "#ffffffa",
                 "light-text": "#888888",
