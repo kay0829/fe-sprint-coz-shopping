@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductList from "@container/ProductList";
+import BookmarkList from "./BookmarkList";
 
 function Main() {
     return (
         <>
-            <section className="mb-3">
+            <section className="mb-6">
                 <div className="flex justify-between items-center">
                     <p className="mb-3 text-2xl">상품 리스트</p>
                     <Link to="/products/list">
@@ -21,6 +22,7 @@ function Main() {
                         <p>더보기 +</p>
                     </Link>
                 </div>
+                <BookmarkList isMain={true} />
             </section>
         </>
     );
