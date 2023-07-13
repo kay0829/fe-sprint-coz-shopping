@@ -16,7 +16,7 @@ function CProductItem(props: { item: IProductItem }) {
     // prettier-ignore
     const [productInfo, setProductInfo] = useState<IProductInfo>({});
     const [isOpen, setIsOpen] = useState(false);
-    const [isBookmarked, setIsBookmarked] = useState(false);
+    const [bookmarked, setBookmarked] = useState(!!isBookmarked);
 
     const { fireToast } = useToast();
 
@@ -26,7 +26,7 @@ function CProductItem(props: { item: IProductItem }) {
                 title: title,
                 subTitle: sub_title,
                 info: `${discountPercentage || 0}%`,
-                subInfo: `${Number.parseInt(price || "0").toLocaleString("ko-KR")}원`,
+                subInfo: `${Number.parseInt(price || "0").toLocaleString()}원`,
                 img: image_url,
             };
         }
@@ -56,7 +56,7 @@ function CProductItem(props: { item: IProductItem }) {
                 title: brand_name,
                 subTitle: "",
                 info: "관심고객수",
-                subInfo: `${(follower || 0).toLocaleString("ko-KR")}명`,
+                subInfo: `${(follower || 0).toLocaleString()}명`,
                 img: brand_image_url,
             };
         }
@@ -82,10 +82,10 @@ function CProductItem(props: { item: IProductItem }) {
                         alt={`${title} 이미지`}
                     />
                 </div>
-                <div className="flex justify-between items-center h-6">
+                <figcaption className="flex justify-between items-center h-6">
                     <p className="font-bold">{productInfo?.title || ""}</p>
                     <p className={`font-bold ${type === "Product" ? "text-violet" : ""}`}>{productInfo?.info || ""}</p>
-                </div>
+                </figcaption>
                 <div className="flex justify-between items-center h-6">
                     <p>{productInfo?.subTitle || ""}</p>
                     <p>{productInfo?.subInfo || ""}</p>
@@ -94,8 +94,8 @@ function CProductItem(props: { item: IProductItem }) {
                     className="absolute bottom-16 right-3"
                     onClick={(e) => {
                         e.stopPropagation();
-                        if (isBookmarked) {
-                            setIsBookmarked(false);
+                        if (bookmarked) {
+                            setBookmarked(false);
                             fireToast({
                                 content: (
                                     <div className="flex items-center">
@@ -105,7 +105,7 @@ function CProductItem(props: { item: IProductItem }) {
                                 ),
                             });
                         } else {
-                            setIsBookmarked(true);
+                            setBookmarked(true);
                             fireToast({
                                 content: (
                                     <div className="flex items-center">
@@ -117,7 +117,7 @@ function CProductItem(props: { item: IProductItem }) {
                         }
                     }}
                 >
-                    {isBookmarked ? (
+                    {bookmarked ? (
                         <AiFillStar size={"2rem"} color="#FFD361" />
                     ) : (
                         <AiFillStar size={"2rem"} color="#e8e8e8" />
