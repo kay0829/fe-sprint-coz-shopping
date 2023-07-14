@@ -11,6 +11,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useToast } from "@hook/useToast";
 
 import { IProductInfo, IProductItemWithBookmark } from "@type/ProductList";
+import { PRODUCT_TYPE } from "@constant/ProductList";
 
 function CProductItem(props: { item: IProductItemWithBookmark }) {
     const {
@@ -37,7 +38,7 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
     const removeBookmarkFn = useSetRecoilState(removeBookmark);
 
     const infoWidthCategory = () => {
-        if (type === "Product") {
+        if (type === PRODUCT_TYPE.PRODUCT) {
             return {
                 title: title,
                 subTitle: sub_title,
@@ -47,9 +48,9 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
             };
         }
 
-        if (type === "Category") {
+        if (type === PRODUCT_TYPE.CATEGORY) {
             return {
-                title: title,
+                title: `#${title}`,
                 subTitle: "",
                 info: "",
                 subInfo: "",
@@ -57,7 +58,7 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
             };
         }
 
-        if (type === "Exhibition") {
+        if (type === PRODUCT_TYPE.EXHIBITION) {
             return {
                 title: title,
                 subTitle: "",
@@ -67,7 +68,7 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
             };
         }
 
-        if (type === "Brand") {
+        if (type === PRODUCT_TYPE.BRAND) {
             return {
                 title: brand_name,
                 subTitle: "",
