@@ -8,6 +8,7 @@ import CToastList from "@component/Common/CToastList";
 
 import Main from "@container/Main";
 import ProductList from "@container/ProductList";
+import BookmarkList from "@container/BookmarkList";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "/products/list",
                 element: <ProductList isMain={false} />,
+            },
+            {
+                path: "/bookmark",
+                element: <BookmarkList isMain={false} />,
             },
         ],
     },

@@ -12,7 +12,7 @@ function CDropDown({ height, children }: { height: string, children: JSX.Element
         after:border-t-0 after:border-b-16px after:border-b-white
         after:border-l-8 after:border-l-transparent after:border-r-8 after:border-r-transparent`;
 
-    const olDefaultCss = "w-max mt-4 shadow-md rounded-xl border border-light-black";
+    const olDefaultCss = "w-max mt-4 shadow-md rounded-xl border border-light-black bg-white ";
 
     return (
         <div

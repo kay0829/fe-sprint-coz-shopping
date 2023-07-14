@@ -23,6 +23,7 @@
     "paths": {
       "@api/*": ["src/api/*"],
       "@asset/*": ["src/asset/*"],
+      "@constant/*": ["src/constant/*"],
       "@component/*": ["src/component/*"],
       "@container/*": ["src/container/*"],
       "@recoil/*": ["src/recoil/*"],
