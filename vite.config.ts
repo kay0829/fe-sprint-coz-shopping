@@ -12,6 +12,7 @@ export default defineConfig({
             { find: "@api", replacement: "/src/api" },
             { find: "@asset", replacement: "/src/asset" },
             { find: "@component", replacement: "/src/component" },
+            { find: "@constant", replacement: "/src/constant" },
             { find: "@container", replacement: "/src/container" },
             { find: "@recoil", replacement: "/src/recoil" },
             { find: "@feature", replacement: "/src/feature" },
