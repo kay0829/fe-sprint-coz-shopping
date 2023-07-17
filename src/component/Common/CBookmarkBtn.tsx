@@ -6,6 +6,8 @@ import { addBookmark, removeBookmark } from "@recoil/Bookmark";
 
 import { useToast } from "@hook/useToast";
 
+import _ from "lodash";
+
 import { IProductItemWithBookmark } from "@type/ProductList";
 
 import { AiFillStar } from "react-icons/ai";
@@ -25,9 +27,7 @@ function CBookmarkBtn({
 
     const changeIsBookmarkedStatusFn = useSetRecoilState(changeIsBookmarkedStatus(item.id));
 
-    const handleBookmarkClick = (e: React.MouseEvent<HTMLElement>) => {
-        e.stopPropagation();
-
+    const handleBookmarkClick = _.debounce((e: React.MouseEvent<HTMLElement>) => {
         let content = { color: "", text: "" };
         if (isBookmarked) {
             removeBookmarkFn([{ ...item }]);
@@ -45,10 +45,16 @@ function CBookmarkBtn({
             ),
         });
         changeIsBookmarkedStatusFn([]);
-    };
+    }, 400);
 
     return (
-        <button className={btnStyle} onClick={handleBookmarkClick}>
+        <button
+            className={btnStyle}
+            onClick={(e) => {
+                e.stopPropagation();
+                handleBookmarkClick(e);
+            }}
+        >
             {isBookmarked ? <AiFillStar size={"2rem"} color="#FFD361" /> : <AiFillStar size={"2rem"} color="#e8e8e8" />}
         </button>
     );
