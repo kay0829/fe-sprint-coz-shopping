@@ -1,9 +1,10 @@
 import React from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { dropdownShow } from "@recoil/Global";
-import { useRecoilValue } from "recoil";
 
 function CDropDown({ height, children }: { height: string, children: JSX.Element }) {
     const show = useRecoilValue(dropdownShow);
+    const setDropdownShow = useSetRecoilState(dropdownShow);
 
     const triangleBeforeCss = `before:content-[''] before:absolute before:w-0 before:h-0 before:z-40 before:-top-0 before:left-3/4
         before:border-t-0 before:border-b-16px before:border-b-light-black
@@ -16,6 +17,7 @@ function CDropDown({ height, children }: { height: string, children: JSX.Element
 
     return (
         <div
+            onClick={() => setDropdownShow(false)}
             style={{ height: `${show ? height : "0"}`, transition: "height ease-out 100ms 0s" }}
             className={`absolute z-30 right-52px w-max overflow-hidden ${triangleBeforeCss} ${triangleAfterCss}`}
         >

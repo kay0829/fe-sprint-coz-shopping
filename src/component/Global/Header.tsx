@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, RefObject, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
@@ -11,7 +11,23 @@ import MenuDropDownItem from "@component/Global/MenuDropDownItem";
 import Logo from "@asset/Logo.png";
 
 function Header() {
+    // prettier-ignore
+    const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
     const [isDropDownShow, setIsDropDownShow] = useRecoilState(dropdownShow);
+
+    useEffect(() => {
+        const outsideClick = (e: MouseEvent) => {
+            if (isDropDownShow && !dropdownRef.current?.contains(e.target as Node)) {
+                setIsDropDownShow(false);
+            }
+        };
+
+        document.body.addEventListener("click", outsideClick);
+
+        return () => {
+            document.body.removeEventListener("click", outsideClick);
+        };
+    }, [isDropDownShow]);
 
     return (
         <header className="flex justify-between items-center fixed w-full h-20 z-20 px-76px bg-white">
@@ -25,13 +41,18 @@ function Header() {
             </Link>
 
             <div className="relatvie z-20">
-                <button className="cursor-pointer" onClick={() => setIsDropDownShow(!isDropDownShow)}>
+                <button className="cursor-pointer" onClick={(e) => {
+                    e.stopPropagation();
+                    setIsDropDownShow(!isDropDownShow);
+                }}>
                     <GiHamburgerMenu size={"2rem"} />
                 </button>
 
-                <CDropDown height="170px">
-                    <MenuDropDownItem />
-                </CDropDown>
+                <div ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
+                    <CDropDown height="170px">
+                        <MenuDropDownItem />
+                    </CDropDown>
+                </div>
             </div>
         </header>
     );
