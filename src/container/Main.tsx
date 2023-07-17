@@ -6,7 +6,7 @@ import BookmarkList from "./BookmarkList";
 function Main() {
     return (
         <>
-            <section className="mb-6">
+            <section className="mt-20 mb-6">
                 <div className="flex justify-between items-center">
                     <p className="mb-3 text-2xl">상품 리스트</p>
                     <Link to="/products/list">
