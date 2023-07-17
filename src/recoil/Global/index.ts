@@ -12,6 +12,11 @@ export const toastState = atom<Toast[]>({
   default: [],
 });
 
+export const selectedGnbType = atom<string>({
+    key: "selectedGnbType",
+    default: "",
+})
+
 // ==================================================================================================================================
 // select의 set 코드
 // 현재 상황에서의 장점
