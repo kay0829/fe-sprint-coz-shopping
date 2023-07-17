@@ -22,6 +22,8 @@ export const selectedGnbType = atom<string>({
 // 현재 상황에서의 장점
 // 1. 아래 코드와 달리 컴포넌트 상단에서 useToast 를 호출하는 순간 Toast 객체를 넘겨주는 것이 아닌
 // 이벤트 핸들러에서 fireToast 함수를 호출하는 시점에서 Toast 객체를 넘겨주기 때문에 toast의 content에 대한 상태관리를 할 필요가 없다.
+// 2. getter는 그럴 수 있어. 하지만 setter는 그러면 안돼.
+// -> DDD (Domain Driven) -> 그래서 의미가 있는 setter가 되어야 합니다!
 
 // 현재 상황에서의 단점
 // 2. ({set}, temp) 여기서 temp에 해당하는 인자의 타입은 Toast[] 또는 DefaultValue
