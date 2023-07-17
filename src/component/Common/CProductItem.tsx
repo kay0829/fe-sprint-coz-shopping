@@ -85,6 +85,8 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
                         img={productInfo.img || PreparingImage}
                         title={productInfo.title || ""}
                         setIsOpen={setIsOpen}
+                        isBookmarked={!!isBookmarked}
+                        item={props.item}
                     />
                 </CModal>
             ) : null}
