@@ -30,7 +30,7 @@ function Gnb() {
         {
             id: 2,
             label: "카테고리",
-            type: "Cateogry",
+            type: "Category",
             img: IconCategory,
             isSelected: false,
         },
