@@ -1,17 +1,23 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { useSceenWidthAndHeight } from "@hook/useScreenWidthAndHeight";
 
-import { AiFillStar } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
+
+import { IProductItemWithBookmark } from "@type/ProductList";
+import CBookmarkBtn from "@component/Common/CBookmarkBtn";
 
 function ProductModal({
     title,
     img,
     setIsOpen,
+    isBookmarked,
+    item,
 }: {
     title: string,
     img: string,
     setIsOpen: Dispatch<SetStateAction<boolean>>,
+    isBookmarked: boolean,
+    item: IProductItemWithBookmark,
 }) {
     const screenRect = useSceenWidthAndHeight();
 
@@ -25,9 +31,7 @@ function ProductModal({
                 <IoClose size={"2rem"} color="#ffffff" />
             </button>
             <div className="flex items-center absolute bottom-3 left-3">
-                <button className="mr-2">
-                    <AiFillStar size={"2rem"} color="#e8e8e8" />
-                </button>
+                <CBookmarkBtn btnStyle="mr-2" isBookmarked={isBookmarked} item={item} />
                 <span className="text-white">{title}</span>
             </div>
         </div>

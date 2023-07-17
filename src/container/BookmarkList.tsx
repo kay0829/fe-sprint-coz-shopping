@@ -1,12 +1,12 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { productItemWithBookmark } from "@recoil/Bookmark";
+import { filterBookmarkListByType } from "@recoil/Bookmark";
 
 import CProductItem from "@component/Common/CProductItem";
 import Gnb from "@component/Global/Gnb";
 
 function BookmarkList({ isMain }: { isMain: boolean }) {
-    const bookmarkList = useRecoilValue(productItemWithBookmark);
+    const bookmarkList = useRecoilValue(filterBookmarkListByType);
 
     const NoBookmarkList = () => (
         <div className="flex justify-center items-center w-screen h-210px">북마크된 상품이 없습니다 🥲</div>

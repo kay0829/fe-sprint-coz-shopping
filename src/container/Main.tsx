@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductList from "@container/ProductList";
+import ProductSummary from "@component/Main/ProductSummary";
 import BookmarkList from "./BookmarkList";
 
 function Main() {
@@ -13,7 +13,7 @@ function Main() {
                         <p>더보기 +</p>
                     </Link>
                 </div>
-                <ProductList isMain={true} />
+                <ProductSummary />
             </section>
             <section className="mb-3">
                 <div className="flex justify-between items-center">

@@ -6,48 +6,52 @@ import IconCategory from "@asset/icon-category.png";
 import IconExhibition from "@asset/icon-exhibition.png";
 import IconBrand from "@asset/icon-category.png";
 
-interface IGnbItems {
-    id: number;
-    label: string;
-    img: string;
-    isSelected: boolean;
-}
+import { useSetRecoilState } from "recoil";
+import { selectedGnbType } from "@recoil/Global";
+
+import { IGnbItems } from "@type/Global";
 
 function Gnb() {
     const gnbItems: Array<IGnbItems> = [
         {
             id: 0,
             label: "전체",
+            type: "",
             img: IconAll,
             isSelected: true,
         },
         {
             id: 1,
             label: "상품",
+            type: "Product",
             img: IconProduct,
             isSelected: false,
         },
         {
             id: 2,
             label: "카테고리",
+            type: "Category",
             img: IconCategory,
             isSelected: false,
         },
         {
             id: 3,
             label: "기획전",
+            type: "Exhibition",
             img: IconExhibition,
             isSelected: false,
         },
         {
             id: 4,
             label: "브랜드",
+            type: "Brand",
             img: IconBrand,
             isSelected: false,
         },
     ];
 
     const [gnbMenu, setGnbMenu] = useState(gnbItems);
+    const setSelectedType = useSetRecoilState(selectedGnbType);
 
     return (
         <div className="flex justify-center mb-6">
@@ -59,8 +63,9 @@ function Gnb() {
                             i !== gnbItems.length - 1 ? "mr-9" : ""
                         } cursor-pointer hover:font-bold hover:text-violet`}
                         onClick={() => {
-                            const selectedIdx = i;
+                            setSelectedType(v.type);
 
+                            const selectedIdx = i;
                             const temp = gnbMenu.map((v) => {
                                 if (v.id === selectedIdx) {
                                     return { ...v, isSelected: true };

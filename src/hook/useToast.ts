@@ -5,7 +5,7 @@ import { getRandomID } from "@util/getRandomId";
 
 import { Toast } from "@type/Global";
 
-export function useToast() {
+export const useToast = () => {
     const toasts = useRecoilValue(toastState);
     const id = getRandomID();
     const addToastItemFn = useSetRecoilState(addToastItem);
@@ -34,4 +34,4 @@ export function useToast() {
     };
 
     return { toasts, fireToast };
-}
+};

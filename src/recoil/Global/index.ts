@@ -8,9 +8,14 @@ export const dropdownShow = atom<boolean>({
 });
 
 export const toastState = atom<Toast[]>({
-  key: 'toastState',
-  default: [],
+    key: 'toastState',
+    default: [],
 });
+
+export const selectedGnbType = atom<string>({
+    key: "selectedGnbType",
+    default: "",
+})
 
 // ==================================================================================================================================
 // select의 set 코드
@@ -26,20 +31,20 @@ export const toastState = atom<Toast[]>({
 
 // 기능 1. toastItem 추가
 export const addToastItem = selector({
-  key: "addToastItem",
-  get: ({ get }) => get(toastState),
-  set: ({ set }, newToast: Toast[] | DefaultValue) => {
-    set(toastState, prevToast => [...prevToast, ...newToast as []]);
-  },
+    key: "addToastItem",
+    get: ({ get }) => get(toastState),
+    set: ({ set }, newToast: Toast[] | DefaultValue) => {
+      set(toastState, prevToast => [...prevToast, ...newToast as []]);
+    },
 })
 // 기능 2. id에 해당하는 toastItem 삭제
 export const removeToastItem = selector({
-  key: "removeToastItem",
-  get: ({ get }) => get(toastState),
-  set: ({ set }, deletedToast: Toast[] | DefaultValue) => {
-      const deleteId = Array.isArray(deletedToast) ? deletedToast[0]?.id : undefined;
-      set(toastState, prevToast => prevToast.filter((v: Toast) => v.id && v.id !== deleteId));
-  },
+    key: "removeToastItem",
+    get: ({ get }) => get(toastState),
+    set: ({ set }, deletedToast: Toast[] | DefaultValue) => {
+        const deleteId = Array.isArray(deletedToast) ? deletedToast[0]?.id : undefined;
+        set(toastState, prevToast => prevToast.filter((v: Toast) => v.id && v.id !== deleteId));
+    },
 })
 // useToast hook 코드
 // export function useToast() {
