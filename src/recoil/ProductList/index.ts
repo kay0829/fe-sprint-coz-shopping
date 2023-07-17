@@ -1,6 +1,7 @@
 import { atom, selector, selectorFamily } from "recoil";
 
 import { IProductItemWithBookmark } from "@type/ProductList";
+import { selectedGnbType } from "@recoil/Global";
 
 export const paramsProductSize = atom({
     key: "paramsProductSize",
@@ -51,5 +52,18 @@ export const changeIsBookmarkedStatus = selectorFamily({
         
         const changeedBookmarkStatus = temp.map((v) => (v.id === productId ? { ...v, isBookmarked: !v.isBookmarked } : v));
         set(productList, changeedBookmarkStatus);
+    }
+})
+
+// 상품 타입에 따라 상품 리스트 데이터를 필터하여 화면에 뿌리기 위한 get 함수
+export const filterProductListByType = selector({
+    key: "filterProductListByType",
+    get: ({ get }) => {
+        const temp = get(productList);
+        const type = get(selectedGnbType);
+
+        if (type === '') return temp;
+
+        return temp.filter(v => v.type === type);
     }
 })

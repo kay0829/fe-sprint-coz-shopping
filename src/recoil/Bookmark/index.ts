@@ -1,5 +1,6 @@
 import { DefaultValue, atom, selectorFamily, SerializableParam, selector } from "recoil";
 import { IProductItemWithBookmark, IProductItem } from "@type/ProductList";
+import { selectedGnbType } from "@recoil/Global";
 
 const localStorageEffect = (key: string) => ({ setSelf, onSet }: any) => {
     const savedValue = localStorage.getItem(key);
@@ -40,4 +41,15 @@ export const removeBookmark = selector({
     const deleteId = Array.isArray(deletedBookmark) ? deletedBookmark[0]?.id : undefined;
       set(productItemWithBookmark, prevBookmark => prevBookmark.filter((v: IProductItemWithBookmark) => v.id && v.id !== deleteId));
   },
+// 상품 타입에 따라 북마크 리스트 데이터를 필터하여 화면에 뿌리기 위한 get 함수
+export const filterBookmarkListByType = selector({
+    key: "filterBookmarkListByType",
+    get: ({ get }) => {
+        const temp = get(productItemWithBookmark);
+        const type = get(selectedGnbType);
+        
+        if (type === '') return temp;
+
+        return temp.filter(v => v.type === type);
+    }
 })
