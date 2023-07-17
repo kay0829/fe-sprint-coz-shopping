@@ -16,7 +16,7 @@ function CDropDown({ height, children }: { height: string, children: JSX.Element
 
     return (
         <div
-            style={{ height: `${show ? height : "0"}`, transition: "height ease-out 500ms 0s" }}
+            style={{ height: `${show ? height : "0"}`, transition: "height ease-out 100ms 0s" }}
             className={`absolute z-20 right-52px w-max overflow-hidden ${triangleBeforeCss} ${triangleAfterCss}`}
         >
             <ol className={`${olDefaultCss}`}>{children}</ol>
