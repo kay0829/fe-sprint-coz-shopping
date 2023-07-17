@@ -14,7 +14,7 @@ function Header() {
     const [isDropDownShow, setIsDropDownShow] = useRecoilState(dropdownShow);
 
     return (
-        <header className="flex justify-between items-center w-full h-20 px-76px">
+        <header className="flex justify-between items-center fixed w-full h-20 z-20 px-76px bg-white">
             <Link to="/">
                 <div className="flex items-center cursor-pointer">
                     <div className="w-55px h-30px pr-3">
@@ -24,7 +24,7 @@ function Header() {
                 </div>
             </Link>
 
-            <div className="relatvie z-10">
+            <div className="relatvie z-20">
                 <button className="cursor-pointer" onClick={() => setIsDropDownShow(!isDropDownShow)}>
                     <GiHamburgerMenu size={"2rem"} />
                 </button>
