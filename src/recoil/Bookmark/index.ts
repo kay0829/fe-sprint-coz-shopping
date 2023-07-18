@@ -2,6 +2,8 @@ import { atom, selector, AtomEffect } from "recoil";
 import { IProductItemWithBookmark } from "@type/ProductList";
 import { selectedGnbType } from "@recoil/Global";
 
+// 타입 참고 블로그
+// [AtomEffects localStorage.](https://velog.io/@rifkin/react-TIL-10)
 const localStorageEffect: <T>(key: string) => AtomEffect<T> = (key: string) => ({ setSelf, onSet }) => {
     const savedValue = localStorage.getItem(key);
 
