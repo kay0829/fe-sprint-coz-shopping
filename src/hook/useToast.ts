@@ -1,4 +1,3 @@
-import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { toastState, addToastItem, removeToastItem } from "@recoil/Global";
 import { getRandomID } from "@util/getRandomId";

@@ -27,7 +27,7 @@ function CBookmarkBtn({
 
     const changeIsBookmarkedStatusFn = useSetRecoilState(changeIsBookmarkedStatus(item.id));
 
-    const handleBookmarkClick = debounce((e: React.MouseEvent<HTMLElement>) => {
+    const handleBookmarkClick = debounce(() => {
         let content = { color: "", text: "" };
         if (isBookmarked) {
             removeBookmarkFn([{ ...item }]);

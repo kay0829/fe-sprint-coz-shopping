@@ -17,17 +17,20 @@ export const productList = atom<IProductItemWithBookmark[]>({
 // 상품 리스트 api 응답 결과에 북마크 여부를 포함하여 productList 상태를 set 할 함수
 export const reqGetProductList = selector<IProductItemWithBookmark[]>({
     key: "reqGetProductList",
-    get: async ({ get }) => {
+    get: ({ get }) => {
         return get(productList);
     },
     set: ({ set }, productListWithoutBookmark) => {
         const savedValue = localStorage.getItem("bookmarks");
-        let paredSavedValue = [];
+        let paredSavedValue: IProductItemWithBookmark[] = [];
         if (savedValue) {
-            paredSavedValue = JSON.parse(savedValue);
+            paredSavedValue = JSON.parse(savedValue) as IProductItemWithBookmark[];
         }
         
-        const bookmarkIds = paredSavedValue.map((v: IProductItemWithBookmark) => v.id);
+        let bookmarkIds: Array<number> = [];
+        if (Array.isArray(bookmarkIds) && Array.isArray(paredSavedValue)) {
+            bookmarkIds = paredSavedValue.map((v: IProductItemWithBookmark) => v.id);
+        }
 
         let data: IProductItemWithBookmark[] = []
         if (Array.isArray(productListWithoutBookmark)) {

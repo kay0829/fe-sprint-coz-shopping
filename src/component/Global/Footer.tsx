@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function Footer() {
     // const fixedCss = `${isNeededToBeFixed ? "fixed bottom-0" : "block"}`;
