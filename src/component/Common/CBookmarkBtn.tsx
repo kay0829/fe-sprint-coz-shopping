@@ -6,7 +6,7 @@ import { addBookmark, removeBookmark } from "@recoil/Bookmark";
 
 import { useToast } from "@hook/useToast";
 
-import _ from "lodash";
+import debounce from "lodash/debounce";
 
 import { IProductItemWithBookmark } from "@type/ProductList";
 
@@ -27,7 +27,7 @@ function CBookmarkBtn({
 
     const changeIsBookmarkedStatusFn = useSetRecoilState(changeIsBookmarkedStatus(item.id));
 
-    const handleBookmarkClick = _.debounce((e: React.MouseEvent<HTMLElement>) => {
+    const handleBookmarkClick = debounce((e: React.MouseEvent<HTMLElement>) => {
         let content = { color: "", text: "" };
         if (isBookmarked) {
             removeBookmarkFn([{ ...item }]);
