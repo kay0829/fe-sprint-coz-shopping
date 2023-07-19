@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Toast } from "@type/Global";
 
 function CToast({ content, duration }: Toast) {

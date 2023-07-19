@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { productList, paramsProductSize, reqGetProductList } from "@recoil/ProductList/index";

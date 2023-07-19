@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import CModal from "@component/Common/CModal";
 import CBookmarkBtn from "@component/Common/CBookmarkBtn";

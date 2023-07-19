@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useSetRecoilState } from "recoil";
 import { changeIsBookmarkedStatus } from "@recoil/ProductList";
 import { addBookmark, removeBookmark } from "@recoil/Bookmark";
@@ -52,7 +50,7 @@ function CBookmarkBtn({
             className={btnStyle}
             onClick={(e) => {
                 e.stopPropagation();
-                handleBookmarkClick(e);
+                handleBookmarkClick();
             }}
         >
             {isBookmarked ? <AiFillStar size={"2rem"} color="#FFD361" /> : <AiFillStar size={"2rem"} color="#e8e8e8" />}

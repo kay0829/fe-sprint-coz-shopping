@@ -1,4 +1,3 @@
-import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { dropdownShow } from "@recoil/Global";
 

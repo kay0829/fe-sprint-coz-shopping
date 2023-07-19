@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useSceenWidthAndHeight } from "@hook/useScreenWidthAndHeight";
 
 import { IoClose } from "react-icons/io5";
