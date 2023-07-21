@@ -21,7 +21,7 @@ PROTECTED_BRANCHES="^(master|develop)"
 
 if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]
 then
-  echo -e "main 또는 develop에 push할 수 없습니다."
+  echo -e "main 또는 develop에 push할 수 없습니다. feature 브랜치로부터 PR을 만들어 제출해주세요."
   echo -e "\n🚫 Cannot push to remote $BRANCH branch, please create your own branch and use PR." && exit 1
 fi
 

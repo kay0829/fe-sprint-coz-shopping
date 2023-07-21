@@ -2,3 +2,17 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run lint
+
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+PROTECTED_BRANCHES="^(master|develop)"
+
+echo "current branch: $BRANCH"
+echo "protected branches: $PROTECTED_BRANCHES"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]
+then
+  echo -e "main 또는 develop에 commit할 수 없습니다."
+  echo -e "\n🚫 Cannot commit to local $BRANCH branch" && exit 1
+fi
+
+exit 0
