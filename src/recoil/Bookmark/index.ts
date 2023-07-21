@@ -27,12 +27,28 @@ export const productItemWithBookmark = atom<IProductItemWithBookmark[]>({
 
 export const addBookmark = selector({
     key: "addBookmark",
-    get: ({ get }) => { 
+    get: ({ get }) => {
         return get(productItemWithBookmark);
     },
-  set: ({ set }, newBookmark) => {
-      // TODO 북마크 리스트를 맵으로 관리가 되어야하는 건 아닌가!
-      set(productItemWithBookmark, prevBookmark => [...prevBookmark, ...newBookmark as []]);
+    set: ({ set }, newBookmark) => {
+        set(productItemWithBookmark, (prevBookmark) => {
+            let newBookmarkObj = { id: -1 };
+            if (Array.isArray(newBookmark)) {
+                newBookmarkObj = newBookmark[0];
+            }
+
+            // 새로운 북마크 객체에 id가 없을 경우
+            if (newBookmarkObj.id === -1) {
+                return prevBookmark;
+            }
+
+            // 북마크 배열에 이미 새로운 북마크 객체의 id가 존재할 경우
+            if (prevBookmark.filter((v) => v.id === newBookmarkObj.id).length > 0) {
+                return prevBookmark;
+            }
+
+            return [...prevBookmark, ...newBookmark as []];
+      });
     },
 })
 
@@ -42,7 +58,7 @@ export const removeBookmark = selector({
         return get(productItemWithBookmark);
     },
     set: ({ set }, deletedBookmark) => {
-      const deleteId = Array.isArray(deletedBookmark) ? deletedBookmark[0]?.id : undefined;
+        const deleteId = Array.isArray(deletedBookmark) ? deletedBookmark[0]?.id : undefined;
         set(productItemWithBookmark, prevBookmark => prevBookmark.filter((v: IProductItemWithBookmark) => v.id && v.id !== deleteId));
     },
 })
