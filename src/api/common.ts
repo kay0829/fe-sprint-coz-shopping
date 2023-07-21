@@ -1,6 +1,12 @@
 import axios from "axios";
-const apiEndpoint = import.meta.env.VITE_APP_API_ENDPOINT;
-const apiVersion = import.meta.env.VITE_APP_API_VERSION;
+let apiEndpoint = "";
+let apiVersion = "";
+if (import.meta.env.VITE_APP_API_ENDPOINT && typeof import.meta.env.VITE_APP_API_ENDPOINT === "string") {
+    apiEndpoint = import.meta.env.VITE_APP_API_ENDPOINT;
+}
+if (import.meta.env.VITE_APP_API_VERSION && typeof import.meta.env.VITE_APP_API_VERSION === "string") {
+    apiVersion = import.meta.env.VITE_APP_API_VERSION;
+}
 
 export const commonApi = ({
     method,

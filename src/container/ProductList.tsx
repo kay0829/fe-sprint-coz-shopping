@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { filterProductListByType, reqGetProductList } from "@recoil/ProductList/index";
@@ -8,6 +8,7 @@ import { reqAllProductList } from "@api/ProductList/index";
 import Gnb from "@component/Global/Gnb";
 import CProductItem from "@component/Common/CProductItem";
 import CNoContent from "@component/Common/CNoContent";
+import { IProductItemWithBookmark } from "@type/ProductList";
 
 function ProductList() {
     const productList = useRecoilValue(filterProductListByType);
@@ -15,7 +16,9 @@ function ProductList() {
     const addBookmarkStatusFn = useSetRecoilState(reqGetProductList);
 
     useEffect(() => {
-        reqAllProductList().then((res) => addBookmarkStatusFn(res.data));
+        reqAllProductList()
+            .then((res) => addBookmarkStatusFn(res.data as IProductItemWithBookmark[]))
+            .catch((err) => console.log(err));
     }, []);
 
     return (

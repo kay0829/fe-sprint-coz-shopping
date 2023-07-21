@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * resize 이벤트 발생 시 바뀐 clientWidth, clientHeight를 반환

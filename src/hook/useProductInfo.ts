@@ -25,7 +25,7 @@ export const useProductInfo = ({ item }: { item: IProductItemWithBookmark }) => 
 
         if (type === PRODUCT_TYPE.CATEGORY) {
             return {
-                title: `#${title}`,
+                title: `#${title || ""}`,
                 subTitle: "",
                 info: "",
                 subInfo: "",

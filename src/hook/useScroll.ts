@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import _ from "lodash";
+import throttle from "lodash/throttle";
 
 export function useScroll() {
     let beforeScrollY = 0;
@@ -7,7 +7,7 @@ export function useScroll() {
 
     const scrollEvent = useMemo(
         () =>
-            _.throttle(() => {
+            throttle(() => {
                 const curScrollY = window.scrollY;
                 if (curScrollY === 0) {
                     setIsScrollDown(false);

@@ -1,20 +1,23 @@
-import { atom, selector } from "recoil";
+import { atom, selector, AtomEffect } from "recoil";
 import { IProductItemWithBookmark } from "@type/ProductList";
 import { selectedGnbType } from "@recoil/Global";
 
-const localStorageEffect = (key: string) => ({ setSelf, onSet }: any) => {
+// 타입 참고 블로그
+// [AtomEffects localStorage.](https://velog.io/@rifkin/react-TIL-10)
+const localStorageEffect: <T>(key: string) => AtomEffect<T> = (key: string) => ({ setSelf, onSet }) => {
     const savedValue = localStorage.getItem(key);
 
     if (savedValue !== null) {
-      setSelf(JSON.parse(savedValue));
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        setSelf(JSON.parse(savedValue));
     }
   
-    onSet((newValue: IProductItemWithBookmark[], _: any, isReset: boolean) => {
+    onSet((newValue, _, isReset) => {
       isReset
         ? localStorage.removeItem(key)
         : localStorage.setItem(key, JSON.stringify(newValue));
     });
-  };
+};
 
 export const productItemWithBookmark = atom<IProductItemWithBookmark[]>({
     key: "productItemWithBookmark",
@@ -27,7 +30,8 @@ export const addBookmark = selector({
     get: ({ get }) => { 
         return get(productItemWithBookmark);
     },
-    set: ({ set }, newBookmark) => {
+  set: ({ set }, newBookmark) => {
+      // TODO 북마크 리스트를 맵으로 관리가 되어야하는 건 아닌가!
       set(productItemWithBookmark, prevBookmark => [...prevBookmark, ...newBookmark as []]);
     },
 })

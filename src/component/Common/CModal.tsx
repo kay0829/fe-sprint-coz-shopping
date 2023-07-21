@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 function CModal({ setIsOpen, children }: { setIsOpen: Dispatch<SetStateAction<boolean>>, children: JSX.Element }) {
     return (

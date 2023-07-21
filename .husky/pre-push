@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 출처: https://typicode.github.io/husky/migrating-from-v4.html
+# 출처: https://library.gabia.com/contents/8492/
+# 출처: https://stackoverflow.com/a/63322891
+# 출처: https://github.com/typicode/husky/issues/1052
+
+LOCAL_REF=""
+REMOTE_REF=""
+
+if read local_ref local_oid remote_ref remote_oid; then
+  echo "local_ref $local_ref"
+  LOCAL_REF="$local_ref"
+  echo "remote_ref $remote_ref"
+  REMOTE_REF="$remote_ref"
+fi
+
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+PROTECTED_BRANCHES="^(master|develop)"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]
+then
+  echo -e "main 또는 develop에 push할 수 없습니다. feature 브랜치로부터 PR을 만들어 제출해주세요."
+  echo -e "\n🚫 Cannot push to remote $BRANCH branch, please create your own branch and use PR." && exit 1
+fi
+
+echo "current branch: $BRANCH"
+echo "protected branches: $PROTECTED_BRANCHES"
+echo "remote name: $1"
+echo "git url: $2"
+
+if [[ $LOCAL_REF != *"$BRANCH"* ]]
+then
+  echo -e "체크아웃한 브랜치만 push해주세요."
+  echo -e "\n🚫 You must use (git push origin $BRANCH)" && exit 1
+fi
+
+exit 0

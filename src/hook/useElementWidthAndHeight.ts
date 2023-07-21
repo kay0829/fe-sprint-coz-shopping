@@ -1,4 +1,4 @@
-import React, { useEffect, useState, RefObject } from "react";
+import { useEffect, useState, RefObject } from "react";
 
 /**
  * 엘리먼트의 전체 width와 height를 반환시키는 훅
