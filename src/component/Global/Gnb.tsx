@@ -11,6 +11,8 @@ import { selectedGnbType } from "@recoil/Global";
 
 import { useScroll } from "@hook/useScroll";
 
+import Text from "@component/Atom/Text";
+
 import { IGnbItems } from "@type/Global";
 
 function Gnb() {
@@ -89,9 +91,9 @@ function Gnb() {
 
                         <div className="text-center">
                             {v.isSelected ? (
-                                <p className="font-bold text-violet underline">{v.label}</p>
+                                <Text text={v.label} type="Highlight" color="violet" styles="underline" />
                             ) : (
-                                <p>{v.label}</p>
+                                <Text text={v.label} type="Body" />
                             )}
                         </div>
                     </div>

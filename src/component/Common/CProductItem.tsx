@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import CModal from "@component/Common/CModal";
+import Text from "@component/Atom/Text";
 import BookmarkBtn from "@component/Morecule/BookmarkBtn";
 import ProductModal from "@component/ProductList/ProductModal";
 import PreparingImage from "@asset/preparing-image.jpeg";
@@ -32,8 +33,12 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
                     />
                 </div>
                 <figcaption className="flex justify-between items-center h-6">
-                    <p className="font-bold">{productInfo?.title || ""}</p>
-                    <p className={`font-bold ${type === "Product" ? "text-violet" : ""}`}>{productInfo?.info || ""}</p>
+                    <Text type="Highlight" text={productInfo?.title || ""} />
+                    <Text
+                        type="Highlight"
+                        text={productInfo?.info || ""}
+                        color={type === "Product" ? "violet" : "black"}
+                    />
                 </figcaption>
                 <div className="flex justify-between items-center h-6">
                     <p>{productInfo?.subTitle || ""}</p>

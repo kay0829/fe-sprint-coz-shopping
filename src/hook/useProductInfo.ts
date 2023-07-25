@@ -36,8 +36,8 @@ export const useProductInfo = ({ item }: { item: IProductItemWithBookmark }) => 
         if (type === PRODUCT_TYPE.EXHIBITION) {
             return {
                 title: title,
-                subTitle: "",
-                info: `${discountPercentage || 0}%`,
+                subTitle: `${sub_title || ""}`,
+                info: "",
                 subInfo: "",
                 img: image_url,
             };

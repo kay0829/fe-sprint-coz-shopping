@@ -7,6 +7,7 @@ import { useToast } from "@hook/useToast";
 import debounce from "lodash/debounce";
 
 import Icon from "@component/Atom/Icon";
+import Text from "@component/Atom/Text";
 
 import { IProductItemWithBookmark } from "@type/ProductList";
 
@@ -42,7 +43,7 @@ function BookmarkBtn({
             content: (
                 <div className="flex items-center">
                     <Icon icon="Star" size={"2rem"} color={content.color} />
-                    <p>{content.text}</p>
+                    <Text type="Highlight" text={content.text} />
                 </div>
             ),
         });
@@ -65,7 +66,7 @@ function BookmarkBtn({
             ) : (
                 <Icon icon="Star" size={"2rem"} color="#e8e8e8" />
             )}
-            {label ? <span className="text-white">{label}</span> : null}
+            {label ? <Text type="Highlight" text={label} color="white" /> : null}
         </button>
     );
 }
