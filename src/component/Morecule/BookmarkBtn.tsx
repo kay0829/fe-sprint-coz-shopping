@@ -6,18 +6,22 @@ import { useToast } from "@hook/useToast";
 
 import debounce from "lodash/debounce";
 
+import Icon from "@component/Atom/Icon";
+
 import { IProductItemWithBookmark } from "@type/ProductList";
 
-import { AiFillStar } from "react-icons/ai";
-
-function CBookmarkBtn({
+function BookmarkBtn({
+    label,
     btnStyle,
     isBookmarked,
     item,
+    handleClickBtn,
 }: {
+    label?: string,
     btnStyle: string,
     isBookmarked: boolean,
     item: IProductItemWithBookmark,
+    handleClickBtn?: () => void,
 }) {
     const { fireToast } = useToast();
     const addBookmarkFn = useSetRecoilState(addBookmark);
@@ -37,7 +41,7 @@ function CBookmarkBtn({
         fireToast({
             content: (
                 <div className="flex items-center">
-                    <AiFillStar size={"2rem"} color={content.color} />
+                    <Icon icon="Star" size={"2rem"} color={content.color} />
                     <p>{content.text}</p>
                 </div>
             ),
@@ -51,11 +55,19 @@ function CBookmarkBtn({
             onClick={(e) => {
                 e.stopPropagation();
                 handleBookmarkClick();
+                if (handleClickBtn) {
+                    handleClickBtn();
+                }
             }}
         >
-            {isBookmarked ? <AiFillStar size={"2rem"} color="#FFD361" /> : <AiFillStar size={"2rem"} color="#e8e8e8" />}
+            {isBookmarked ? (
+                <Icon icon="Star" size={"2rem"} color="#FFD361" />
+            ) : (
+                <Icon icon="Star" size={"2rem"} color="#e8e8e8" />
+            )}
+            {label ? <span className="text-white">{label}</span> : null}
         </button>
     );
 }
 
-export default CBookmarkBtn;
+export default BookmarkBtn;
