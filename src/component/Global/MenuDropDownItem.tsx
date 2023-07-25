@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AiOutlineGift, AiOutlineStar } from "react-icons/ai";
+import Icon from "@component/Atom/Icon";
 
 function MenuDropDownItem() {
     const liDefaultCss = "flex items-center w-48 px-4 py-3 border-b border-light-black";
@@ -8,7 +8,7 @@ function MenuDropDownItem() {
             <li className={liDefaultCss}>임솔팅님, 안녕하세요!</li>
             <Link to="/products/list">
                 <li className={`${liDefaultCss} cursor-pointer`}>
-                    <AiOutlineGift />
+                    <Icon icon="OutlineGift" size="1rem" color="#000000" />
                     <div className="w-32 pl-2 text-left">
                         <p>상품리스트 페이지</p>
                     </div>
@@ -16,7 +16,7 @@ function MenuDropDownItem() {
             </Link>
             <Link to="/bookmark">
                 <li className={`${liDefaultCss} cursor-pointer`}>
-                    <AiOutlineStar />
+                    <Icon icon="OutlineStar" size="1rem" color="#000000" />
                     <div className="w-32 pl-2 text-left">
                         <p>북마크 페이지</p>
                     </div>

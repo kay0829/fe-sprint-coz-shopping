@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { dropdownShow } from "@recoil/Global";
 
-import { GiHamburgerMenu } from "react-icons/gi";
-
 import CDropDown from "@component/Common/CDropDown";
 import MenuDropDownItem from "@component/Global/MenuDropDownItem";
+import Icon from "@component/Atom/Icon";
 import Logo from "@asset/Logo.png";
 
 function Header() {
@@ -45,7 +44,7 @@ function Header() {
                     e.stopPropagation();
                     setIsDropDownShow(!isDropDownShow);
                 }}>
-                    <GiHamburgerMenu size={"2rem"} />
+                    <Icon icon="HamburgerMenu" size={"2rem"} color="#000000" />
                 </button>
 
                 <div ref={dropdownRef} onClick={(e) => e.stopPropagation()}>

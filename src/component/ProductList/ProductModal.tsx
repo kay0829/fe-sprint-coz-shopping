@@ -1,10 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 import { useSceenWidthAndHeight } from "@hook/useScreenWidthAndHeight";
 
-import { IoClose } from "react-icons/io5";
-
 import { IProductItemWithBookmark } from "@type/ProductList";
-import CBookmarkBtn from "@component/Common/CBookmarkBtn";
+import BookmarkBtn from "@component/Morecule/BookmarkBtn";
+import Icon from "@component/Atom/Icon";
 
 function ProductModal({
     title,
@@ -28,11 +27,10 @@ function ProductModal({
         >
             <img className="w-full h-full" src={img} alt="" />
             <button className="absolute top-3 right-3" onClick={() => setIsOpen(false)}>
-                <IoClose size={"2rem"} color="#ffffff" />
+                <Icon icon="Close" size={"2rem"} color="#ffffff" />
             </button>
             <div className="flex items-center absolute bottom-3 left-3">
-                <CBookmarkBtn btnStyle="mr-2" isBookmarked={isBookmarked} item={item} />
-                <span className="text-white">{title}</span>
+                <BookmarkBtn btnStyle="mr-2" isBookmarked={isBookmarked} item={item} label={title} />
             </div>
         </div>
     );

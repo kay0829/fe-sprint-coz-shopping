@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import CModal from "@component/Common/CModal";
-import CBookmarkBtn from "@component/Common/CBookmarkBtn";
+import BookmarkBtn from "@component/Morecule/BookmarkBtn";
 import ProductModal from "@component/ProductList/ProductModal";
 import PreparingImage from "@asset/preparing-image.jpeg";
 
@@ -39,7 +39,7 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
                     <p>{productInfo?.subTitle || ""}</p>
                     <p>{productInfo?.subInfo || ""}</p>
                 </div>
-                <CBookmarkBtn btnStyle={btnStyle} isBookmarked={!!isBookmarked} item={props.item} />
+                <BookmarkBtn btnStyle={btnStyle} isBookmarked={!!isBookmarked} item={props.item} />
             </figure>
             {isOpen ? (
                 <CModal setIsOpen={setIsOpen}>
