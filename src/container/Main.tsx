@@ -10,7 +10,7 @@ function Main() {
                 <div className="flex justify-between items-center">
                     <Text type="Label" text="상품 리스트" styles="mb-3" />
                     <Link to="/products/list">
-                        <p>더보기 +</p>
+                        <Text type="Body" text="더보기 +" />
                     </Link>
                 </div>
                 <ProductSummary />
@@ -19,7 +19,7 @@ function Main() {
                 <div className="flex justify-between items-center">
                     <Text type="Label" text="북마크 리스트" styles="mb-3" />
                     <Link to="/bookmark">
-                        <p>더보기 +</p>
+                        <Text type="Body" text="더보기 +" />
                     </Link>
                 </div>
                 <BookmarkList isMain={true} />

@@ -41,8 +41,8 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
                     />
                 </figcaption>
                 <div className="flex justify-between items-center h-6">
-                    <p>{productInfo?.subTitle || ""}</p>
-                    <p>{productInfo?.subInfo || ""}</p>
+                    <Text type="Body" text={productInfo?.subTitle || ""} />
+                    <Text type="Body" text={productInfo?.subInfo || ""} />
                 </div>
                 <BookmarkBtn btnStyle={btnStyle} isBookmarked={!!isBookmarked} item={props.item} />
             </figure>

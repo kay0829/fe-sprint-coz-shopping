@@ -1,4 +1,5 @@
 import { useRouteError } from "react-router-dom";
+import Text from "@component/Atom/Text";
 
 interface IError {
     data: string;
@@ -14,12 +15,10 @@ function ErrorPage() {
   return (
     <div>
         <h1>Oops!</h1>
-        <p>Sorry, an unexpected error has occurred.</p>
-        <p>
-            {e.error ? (
-              <i>{e.statusText || e.error.message}</i>
-            ) : null}
-        </p>
+        <Text type="Body" text="Sorry, an unexpected error has occurred." />
+        {e.error ? (
+          <i>{e.statusText || e.error.message}</i>
+        ) : null}
     </div>
   );
 }
