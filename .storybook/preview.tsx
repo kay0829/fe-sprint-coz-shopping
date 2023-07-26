@@ -3,6 +3,8 @@ import "../src/index.css";
 import type { Preview } from "@storybook/react";
 import { RecoilRoot } from "recoil";
 
+import { withRouter } from "storybook-addon-react-router-v6";
+
 const preview: Preview = {
     parameters: {
         actions: { argTypesRegex: "^on[A-Z].*" },
@@ -14,6 +16,7 @@ const preview: Preview = {
         },
     },
     decorators: [
+        withRouter,
         (Story) => (
             <RecoilRoot>
                 <Story />
