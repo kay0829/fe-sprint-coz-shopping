@@ -2,7 +2,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { toastState, addToastItem, removeToastItem } from "@recoil/Global";
 import { getRandomID } from "@util/getRandomId";
 
-import { Toast } from "@type/Global";
+import { IToast } from "@type/Global";
 
 export const useToast = () => {
     const toasts = useRecoilValue(toastState);
@@ -10,7 +10,7 @@ export const useToast = () => {
     const addToastItemFn = useSetRecoilState(addToastItem);
     const removeToastItemFn = useSetRecoilState(removeToastItem);
 
-    const fireToast = (toast: Toast) => {
+    const fireToast = (toast: IToast) => {
         addToastItemFn([
             {
                 id: id,

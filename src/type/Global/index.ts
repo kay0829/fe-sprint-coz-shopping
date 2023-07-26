@@ -1,4 +1,4 @@
-export interface Toast {
+export interface IToast {
     id?: string;
     content: string | JSX.Element;
     duration?: number;
