@@ -15,11 +15,11 @@ function Text({
         let classNames = "";
 
         if (color) {
-            classNames += `text-${color} `;
+            classNames += color;
         }
 
         if (styles) {
-            classNames += `${styles} `;
+            classNames += ` ${styles}`;
         }
 
         if (type === "Heading") {
