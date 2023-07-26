@@ -30,7 +30,7 @@ function ProductModal({
                 <Icon icon="Close" size={"2rem"} color="#ffffff" />
             </button>
             <div className="flex items-center absolute bottom-3 left-3">
-                <BookmarkBtn btnStyle="mr-2" isBookmarked={isBookmarked} item={item} label={title} />
+                <BookmarkBtn btnStyle="flex items-center mr-2" isBookmarked={isBookmarked} item={item} label={title} />
             </div>
         </div>
     );

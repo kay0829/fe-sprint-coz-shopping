@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-function CModal({ setIsOpen, children }: { setIsOpen: Dispatch<SetStateAction<boolean>>, children: JSX.Element }) {
+function Modal({ setIsOpen, children }: { setIsOpen: Dispatch<SetStateAction<boolean>>, children: JSX.Element }) {
     return (
         <div onClick={() => setIsOpen(false)} className="absolute top-0 left-0 w-screen h-screen z-40 bg-modal">
             <div
@@ -13,4 +13,4 @@ function CModal({ setIsOpen, children }: { setIsOpen: Dispatch<SetStateAction<bo
     );
 }
 
-export default CModal;
+export default Modal;

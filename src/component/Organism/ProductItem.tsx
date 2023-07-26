@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-import CModal from "@component/Common/CModal";
+import Modal from "@component/Morecule/Modal";
 import Text from "@component/Atom/Text";
 import BookmarkBtn from "@component/Morecule/BookmarkBtn";
-import ProductModal from "@component/ProductList/ProductModal";
+import ProductModal from "@component/Organism/ProductModal";
 import PreparingImage from "@asset/preparing-image.jpeg";
 
 import { useProductInfo } from "@hook/useProductInfo";
 
 import { IProductItemWithBookmark } from "@type/ProductList";
 
-function CProductItem(props: { item: IProductItemWithBookmark }) {
+function ProductItem(props: { item: IProductItemWithBookmark }) {
     const { id, type, isBookmarked } = props.item;
 
     const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,7 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
                 <BookmarkBtn btnStyle={btnStyle} isBookmarked={!!isBookmarked} item={props.item} />
             </figure>
             {isOpen ? (
-                <CModal setIsOpen={setIsOpen}>
+                <Modal setIsOpen={setIsOpen}>
                     <ProductModal
                         img={productInfo.img || PreparingImage}
                         title={productInfo.title || ""}
@@ -55,10 +55,10 @@ function CProductItem(props: { item: IProductItemWithBookmark }) {
                         isBookmarked={!!isBookmarked}
                         item={props.item}
                     />
-                </CModal>
+                </Modal>
             ) : null}
         </>
     );
 }
 
-export default CProductItem;
+export default ProductItem;
