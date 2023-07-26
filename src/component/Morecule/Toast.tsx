@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Toast } from "@type/Global";
+import { IToast } from "@type/Global";
 
-function CToast({ content, duration }: Toast) {
+function Toast({ content, duration }: IToast) {
     const [isShow, setIsShow] = useState(false);
 
     useEffect(() => {
@@ -21,4 +21,4 @@ function CToast({ content, duration }: Toast) {
     return <>{isShow ? <div className={defaultCss}>{content}</div> : null}</>;
 }
 
-export default CToast;
+export default Toast;

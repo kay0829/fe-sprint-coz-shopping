@@ -1,18 +1,18 @@
 import { useRecoilValue } from "recoil";
 import { toastState } from "@recoil/Global";
 
-import CToast from "@component/Common/CToast";
+import Toast from "@component/Morecule/Toast";
 
-function CToastList() {
+function ToastList() {
     const toasts = useRecoilValue(toastState);
 
     return (
         <div className="fixed bottom-10 right-4">
             {toasts.map((v) => (
-                <CToast key={v.id} content={v.content} bottom={v.bottom} duration={v.duration} />
+                <Toast key={v.id} content={v.content} bottom={v.bottom} duration={v.duration} />
             ))}
         </div>
     );
 }
 
-export default CToastList;
+export default ToastList;
