@@ -4,7 +4,7 @@ import BookmarkBtn from "@component/Morecule/BookmarkBtn";
 import type { Meta } from "@storybook/react";
 
 export default {
-    title: "Morecule/BookmarkBtn",
+    title: "Morecule/Buttons",
     component: BookmarkBtn,
     parameters: {
         backgrounds: { default: { value: "light" } },
