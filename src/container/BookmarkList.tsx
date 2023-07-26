@@ -1,8 +1,8 @@
 import { useRecoilValue } from "recoil";
 import { filterBookmarkListByType } from "@recoil/Bookmark";
 
-import CProductItem from "@component/Common/CProductItem";
-import Gnb from "@component/Global/Gnb";
+import ProductItem from "@component/Organism/ProductItem";
+import Gnb from "@component/Organism/Gnb";
 
 function BookmarkList({ isMain }: { isMain: boolean }) {
     const bookmarkList = useRecoilValue(filterBookmarkListByType);
@@ -20,7 +20,7 @@ function BookmarkList({ isMain }: { isMain: boolean }) {
                     }`}
                 >
                     {bookmarkList.length > 0 ? (
-                        bookmarkList.slice(0, 10).map((v) => <CProductItem item={v} key={v.id} />)
+                        bookmarkList.slice(0, 10).map((v) => <ProductItem item={v} key={v.id} />)
                     ) : (
                         <NoBookmarkList />
                     )}
@@ -30,7 +30,7 @@ function BookmarkList({ isMain }: { isMain: boolean }) {
                     <Gnb />
                     <div className="flex flex-wrap justify-center">
                         {bookmarkList.length > 0 ? (
-                            bookmarkList.map((v) => <CProductItem item={v} key={v.id} />)
+                            bookmarkList.map((v) => <ProductItem item={v} key={v.id} />)
                         ) : (
                             <NoBookmarkList />
                         )}

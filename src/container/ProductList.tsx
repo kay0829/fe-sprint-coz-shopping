@@ -5,9 +5,9 @@ import { filterProductListByType, reqGetProductList } from "@recoil/ProductList/
 
 import { reqAllProductList } from "@api/ProductList/index";
 
-import Gnb from "@component/Global/Gnb";
-import CProductItem from "@component/Common/CProductItem";
-import CNoContent from "@component/Common/CNoContent";
+import Gnb from "@component/Organism/Gnb";
+import ProductItem from "@component/Organism/ProductItem";
+import NoContent from "@component/Organism/NoContent";
 import { IProductItemWithBookmark } from "@type/ProductList";
 
 function ProductList() {
@@ -26,9 +26,9 @@ function ProductList() {
             <Gnb />
             <div className="flex flex-wrap justify-center">
                 {productList.length > 0 ? (
-                    productList.map((v) => <CProductItem item={v} key={v.id} />)
+                    productList.map((v) => <ProductItem item={v} key={v.id} />)
                 ) : (
-                    <CNoContent message={"상품이 없습니다 🥲"} />
+                    <NoContent message={"상품이 없습니다 🥲"} />
                 )}
             </div>
         </div>

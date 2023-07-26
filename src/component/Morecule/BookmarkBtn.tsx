@@ -66,7 +66,7 @@ function BookmarkBtn({
             ) : (
                 <Icon icon="Star" size={"2rem"} color="#e8e8e8" />
             )}
-            {label ? <Text type="Highlight" text={label} color="white" /> : null}
+            {label ? <Text type="Highlight" text={label} color="text-white" styles="ml-2" /> : null}
         </button>
     );
 }

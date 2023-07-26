@@ -7,7 +7,7 @@ export default {
     title: "Morecule/Buttons",
     component: BookmarkBtn,
     parameters: {
-        backgrounds: { default: { value: "light" } },
+        backgrounds: { default: { value: "dark" } },
         controls: { hideNoControlsWarning: true },
     },
     decorators: [
@@ -19,7 +19,7 @@ export default {
     ],
 } as Meta<typeof BookmarkBtn>;
 
-export const BookmarkButton = () => {
+export const BookmarkButton = ({label}: {label: string}) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const item = {
         id: 92,
@@ -37,10 +37,15 @@ export const BookmarkButton = () => {
 
     return (
         <BookmarkBtn
-            btnStyle="mr-2"
+            btnStyle="flex items-center mr-2"
             isBookmarked={isBookmarked}
             item={item}
             handleClickBtn={() => setIsBookmarked(!isBookmarked)}
+            label={label}
         />
     );
 };
+
+BookmarkButton.args = {
+    label: 'Lorem ipsum dolor sit amet',
+}

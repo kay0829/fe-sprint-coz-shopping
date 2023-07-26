@@ -1,7 +1,7 @@
 import React, { useRef, RefObject, useState, useEffect } from "react";
 import { Outlet } from "react-router";
-import Header from "@component/Global/Header";
-import Footer from "@component/Global/Footer";
+import Header from "@component/Organism/Header";
+import Footer from "@component/Organism/Footer";
 
 import { useSceenWidthAndHeight } from "@hook/useScreenWidthAndHeight";
 
@@ -19,7 +19,7 @@ function Container() {
         // screen.height: 스크린의 height
         // 80: Header의 height
         // 58: Footer의 height
-        const temp = screenRect.height - 80 - 58;
+        const temp = screenRect.height - 58;
         setMainHeight(temp);
     }, [screenRect.height]);
 
