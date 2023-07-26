@@ -1,10 +1,14 @@
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { dropdownShow } from "@recoil/Global";
-
-function CDropDown({ height, children }: { height: string, children: JSX.Element }) {
-    const show = useRecoilValue(dropdownShow);
-    const setDropdownShow = useSetRecoilState(dropdownShow);
-
+function DropDown({
+    height,
+    children,
+    isDropDownShow,
+    setIsDropDownShow,
+}: {
+    height: string,
+    children: JSX.Element,
+    isDropDownShow: boolean,
+    setIsDropDownShow: (isShow: boolean) => void,
+}) {
     const triangleBeforeCss = `before:content-[''] before:absolute before:w-0 before:h-0 before:z-40 before:-top-0 before:left-3/4
         before:border-t-0 before:border-b-16px before:border-b-light-black
         before:border-l-8 before:border-l-transparent before:border-r-8 before:border-r-transparent`;
@@ -16,8 +20,8 @@ function CDropDown({ height, children }: { height: string, children: JSX.Element
 
     return (
         <div
-            onClick={() => setDropdownShow(false)}
-            style={{ height: `${show ? height : "0"}`, transition: "height ease-out 100ms 0s" }}
+            onClick={() => setIsDropDownShow(false)}
+            style={{ height: `${isDropDownShow ? height : "0"}`, transition: "height ease-out 100ms 0s" }}
             className={`absolute z-30 right-52px w-max overflow-hidden ${triangleBeforeCss} ${triangleAfterCss}`}
         >
             <ol className={`${olDefaultCss}`}>{children}</ol>
@@ -25,4 +29,4 @@ function CDropDown({ height, children }: { height: string, children: JSX.Element
     );
 }
 
-export default CDropDown;
+export default DropDown;
