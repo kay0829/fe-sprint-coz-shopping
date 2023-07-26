@@ -1,5 +1,5 @@
 import { DefaultValue, atom, selector } from "recoil";
-import { Toast } from "@type/Global";
+import { IToast } from "@type/Global";
 
 
 export const dropdownShow = atom<boolean>({
@@ -7,7 +7,7 @@ export const dropdownShow = atom<boolean>({
     default: false,
 });
 
-export const toastState = atom<Toast[]>({
+export const toastState = atom<IToast[]>({
     key: 'toastState',
     default: [],
 });
@@ -35,7 +35,7 @@ export const selectedGnbType = atom<string>({
 export const addToastItem = selector({
     key: "addToastItem",
     get: ({ get }) => get(toastState),
-    set: ({ set }, newToast: Toast[] | DefaultValue) => {
+    set: ({ set }, newToast: IToast[] | DefaultValue) => {
       set(toastState, prevToast => [...prevToast, ...newToast as []]);
     },
 })
@@ -43,9 +43,9 @@ export const addToastItem = selector({
 export const removeToastItem = selector({
     key: "removeToastItem",
     get: ({ get }) => get(toastState),
-    set: ({ set }, deletedToast: Toast[] | DefaultValue) => {
+    set: ({ set }, deletedToast: IToast[] | DefaultValue) => {
         const deleteId = Array.isArray(deletedToast) ? deletedToast[0]?.id : undefined;
-        set(toastState, prevToast => prevToast.filter((v: Toast) => v.id && v.id !== deleteId));
+        set(toastState, prevToast => prevToast.filter((v: IToast) => v.id && v.id !== deleteId));
     },
 })
 // useToast hook 코드

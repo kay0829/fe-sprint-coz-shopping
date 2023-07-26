@@ -5,8 +5,8 @@ import { productList, paramsProductSize, reqGetProductList } from "@recoil/Produ
 
 import { reqProductList } from "@api/ProductList/index";
 
-import CProductItem from "@component/Common/CProductItem";
-import CNoContent from "@component/Common/CNoContent";
+import ProductItem from "@component/Organism/ProductItem";
+import NoContent from "@component/Organism/NoContent";
 import { IProductItemWithBookmark } from "@type/ProductList";
 
 function ProductSummary() {
@@ -24,9 +24,9 @@ function ProductSummary() {
     return (
         <div className="flex flex-nowrap w-full overflow-x-scroll">
             {list.length > 0 ? (
-                list.slice(0, 10).map((v) => <CProductItem item={v} key={v.id} />)
+                list.slice(0, 10).map((v) => <ProductItem item={v} key={v.id} />)
             ) : (
-                <CNoContent message={"상품이 없습니다 🥲"} />
+                <NoContent message={"상품이 없습니다 🥲"} />
             )}
         </div>
     );

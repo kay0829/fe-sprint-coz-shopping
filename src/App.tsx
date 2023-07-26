@@ -3,7 +3,7 @@ import { RecoilRoot } from "recoil";
 
 import ErrorPage from "@container/ErrorPage";
 import Container from "@container/Container";
-import CToastList from "@component/Common/CToastList";
+import ToastList from "@component/Organism/ToastList";
 
 import Main from "@container/Main";
 import ProductList from "@container/ProductList";
@@ -38,7 +38,7 @@ function App() {
         <div className={`${globalCss}`}>
             <RecoilRoot>
                 <RouterProvider router={router} />
-                <CToastList />
+                <ToastList />
             </RecoilRoot>
         </div>
     );
